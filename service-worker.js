@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/cyp-inv-calc/precache-manifest.a761f22db727c39188996308c267f969.js"
+  "/cyp-inv-calc/precache-manifest.8055cefa8857af9b3afb83d53994ae3e.js"
 );
 
 self.addEventListener('message', (event) => {
