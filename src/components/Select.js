@@ -2,9 +2,15 @@ import React from 'react'; // Add this line
 
 function Select({ value, onValueChange, children }) {
   return (
-    <select value={value} onChange={(e) => onValueChange(e.target.value)}>
-      {children}
-    </select>
+    <div className="relative">
+      <select 
+        value={value} 
+        onChange={(e) => onValueChange(e.target.value)}
+        className="w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+      >
+        {children}
+      </select>
+    </div>
   );
 }
 

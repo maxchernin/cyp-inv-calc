@@ -36,14 +36,9 @@ const PropertyDetails = ({ propertyDetails, handlePropertyChange }) => (
         value={propertyDetails.constructionMonths.toString()}
         onValueChange={(value) => handlePropertyChange('constructionMonths', Number(value))}
       >
-        <SelectTrigger className="bg-white text-black">
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          {[12, 24, 36, 48, 60].map((months) => (
-            <SelectItem key={months} value={months.toString()}>{months / 12} years</SelectItem>
-          ))}
-        </SelectContent>
+        {[12, 24, 36, 48, 60].map((months) => (
+          <SelectItem key={months} value={months.toString()}>{months / 12} years</SelectItem>
+        ))}
       </Select>
     </div>
   </div>

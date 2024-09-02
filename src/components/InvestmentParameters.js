@@ -1,7 +1,7 @@
 import React from 'react';
 import { Label } from './Label';
 import SliderWithValue from './SliderWithValue';
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from './Select';
+import { Select, SelectItem } from './Select';
 
 const InvestmentParameters = ({ investmentParams, handleInvestmentChange, rentalYield }) => (
   <div>
@@ -26,14 +26,9 @@ const InvestmentParameters = ({ investmentParams, handleInvestmentChange, rental
           value={investmentParams.years.toString()} 
           onValueChange={(value) => handleInvestmentChange('years', Number(value))}
         >
-          <SelectTrigger className="bg-white text-black">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {[...Array(20)].map((_, i) => (
-              <SelectItem key={i+1} value={(i+1).toString()}>{i+1} years</SelectItem>
-            ))}
-          </SelectContent>
+          {[...Array(20)].map((_, i) => (
+            <SelectItem key={i+1} value={(i+1).toString()}>{i+1} years</SelectItem>
+          ))}
         </Select>
       </div>
     </div>
