@@ -1,40 +1,46 @@
 import React from 'react';
 import { Label } from './Label';
-import { SliderWithValue } from './SliderWithValue';
-import { Toggle } from './Toggle';
+import SliderWithValue from './SliderWithValue';
 
-const TaxDetails = ({ investmentParams, handleInvestmentChange }) => (
+const TaxDetails = ({ taxDetails, handleTaxChange }) => (
   <div>
-    <h3 className="text-xl font-semibold mb-2 border-b-2 pb-2">Taxes</h3>
-    <div className="grid grid-cols-3 gap-4">
-      <div className="flex flex-col space-y-1.5">
-        <Label>New Apartment</Label>
-        <Toggle 
-          id="isNewApartment" 
-          checked={investmentParams.isNewApartment} 
-          onChange={(checked) => handleInvestmentChange('isNewApartment', checked)} 
+    <h3 className="text-xl font-semibold mb-4">Taxes</h3>
+    <div className="space-y-4">
+      <div className="flex items-center">
+        <input
+          type="checkbox"
+          id="isNewApartment"
+          checked={taxDetails.isNewApartment}
+          onChange={(e) => handleTaxChange('isNewApartment', e.target.checked)}
+          className="mr-2 h-4 w-4"
         />
+        <Label htmlFor="isNewApartment" className="cursor-pointer">New Apartment</Label>
       </div>
-      {investmentParams.isNewApartment ? (
-        <div className="flex flex-col space-y-1.5">
+      {taxDetails.isNewApartment ? (
+        <div className="flex items-center justify-between">
           <Label>VAT Rate</Label>
-          <div className="font-bold">{investmentParams.vatRate}%</div>
+          <div className="font-bold">{taxDetails.vatRate}%</div>
         </div>
       ) : (
         <SliderWithValue
           label="Transfer Tax Rate"
           id="transferTaxRate"
-          value={investmentParams.transferTaxRate}
+          value={taxDetails.transferTaxRate}
           min={0}
           max={15}
           step={0.1}
-          onChange={(value) => handleInvestmentChange('transferTaxRate', value)}
+          onChange={(value) => handleTaxChange('transferTaxRate', value)}
         />
       )}
-      <div className="flex flex-col space-y-1.5">
-        <Label>Israeli Tax Rate</Label>
-        <div className="font-bold">{investmentParams.israeliTaxRate}%</div>
-      </div>
+      <SliderWithValue
+        label="Israeli Tax Rate"
+        id="israeliTaxRate"
+        value={taxDetails.israeliTaxRate}
+        min={0}
+        max={50}
+        step={0.1}
+        onChange={(value) => handleTaxChange('israeliTaxRate', value)}
+      />
     </div>
   </div>
 );

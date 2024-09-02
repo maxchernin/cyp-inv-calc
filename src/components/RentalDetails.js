@@ -1,41 +1,38 @@
 import React from 'react';
 import { Input } from './Input';
 import { Label } from './Label';
+import SliderWithValue from './SliderWithValue';
 
-const RentalDetails = ({ investmentParams, handleInvestmentChange }) => (
-  <div>
-    <h3 className="text-xl font-semibold mb-2 border-b-2 pb-2">Rental Details</h3>
-    <div className="grid grid-cols-3 gap-4">
-      <div className="flex flex-col space-y-1.5">
-        <Label htmlFor="occupancyRate">Annual Occupancy Rate (%)</Label>
-        <Input 
-          id="occupancyRate" 
-          type="number" 
-          value={investmentParams.occupancyRate} 
-          onChange={(e) => handleInvestmentChange('occupancyRate', Number(e.target.value))}
-          min={0}
-          max={100}
-          step={0.1}
-          className="bg-white text-black"
-        />
-      </div>
-      <div className="flex flex-col space-y-1.5">
+const RentalDetails = ({ rentalDetails, handleRentalChange }) => (
+  <div className="space-y-3">
+    <h3 className="text-lg font-semibold">Rental Details</h3>
+    <SliderWithValue
+      label="Annual Occupancy Rate (%)"
+      id="occupancyRate"
+      value={rentalDetails.occupancyRate}
+      min={0}
+      max={100}
+      step={1}
+      onChange={(value) => handleRentalChange('occupancyRate', value)}
+    />
+    <div className="grid grid-cols-2 gap-3">
+      <div>
         <Label htmlFor="monthlyRent">Estimated Monthly Rent (€)</Label>
-        <Input 
-          id="monthlyRent" 
+        <Input
+          id="monthlyRent"
           type="number"
-          value={investmentParams.monthlyRent} 
-          onChange={(e) => handleInvestmentChange('monthlyRent', Number(e.target.value))} 
+          value={rentalDetails.monthlyRent}
+          onChange={(e) => handleRentalChange('monthlyRent', Number(e.target.value))}
           className="bg-white text-black"
         />
       </div>
-      <div className="flex flex-col space-y-1.5">
+      <div>
         <Label htmlFor="monthlyManagementFee">Monthly Management Fee (€)</Label>
-        <Input 
-          id="monthlyManagementFee" 
+        <Input
+          id="monthlyManagementFee"
           type="number"
-          value={investmentParams.monthlyManagementFee} 
-          onChange={(e) => handleInvestmentChange('monthlyManagementFee', Number(e.target.value))} 
+          value={rentalDetails.monthlyManagementFee}
+          onChange={(e) => handleRentalChange('monthlyManagementFee', Number(e.target.value))}
           className="bg-white text-black"
         />
       </div>
