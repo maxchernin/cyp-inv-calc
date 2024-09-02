@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/cyp-inv-calc/static/css/main.f855e6bc.css",
-    "main.js": "/cyp-inv-calc/static/js/main.f59d061d.js",
-    "static/js/453.7f72c850.chunk.js": "/cyp-inv-calc/static/js/453.7f72c850.chunk.js",
+    "main.css": "/cyp-inv-calc/static/css/main.622db4f5.chunk.css",
+    "main.js": "/cyp-inv-calc/static/js/main.f8212517.chunk.js",
+    "main.js.map": "/cyp-inv-calc/static/js/main.f8212517.chunk.js.map",
+    "runtime~main.js": "/cyp-inv-calc/static/js/runtime~main.e14e88f7.js",
+    "runtime~main.js.map": "/cyp-inv-calc/static/js/runtime~main.e14e88f7.js.map",
+    "static/js/2.ca150098.chunk.js": "/cyp-inv-calc/static/js/2.ca150098.chunk.js",
+    "static/js/2.ca150098.chunk.js.map": "/cyp-inv-calc/static/js/2.ca150098.chunk.js.map",
+    "static/js/3.940f5f6f.chunk.js": "/cyp-inv-calc/static/js/3.940f5f6f.chunk.js",
+    "static/js/3.940f5f6f.chunk.js.map": "/cyp-inv-calc/static/js/3.940f5f6f.chunk.js.map",
     "index.html": "/cyp-inv-calc/index.html",
-    "main.f855e6bc.css.map": "/cyp-inv-calc/static/css/main.f855e6bc.css.map",
-    "main.f59d061d.js.map": "/cyp-inv-calc/static/js/main.f59d061d.js.map",
-    "453.7f72c850.chunk.js.map": "/cyp-inv-calc/static/js/453.7f72c850.chunk.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.f59d061d.js"
-  ]
+    "precache-manifest.07272dbf373d9babaa7522e1f2acef2d.js": "/cyp-inv-calc/precache-manifest.07272dbf373d9babaa7522e1f2acef2d.js",
+    "service-worker.js": "/cyp-inv-calc/service-worker.js",
+    "static/css/main.622db4f5.chunk.css.map": "/cyp-inv-calc/static/css/main.622db4f5.chunk.css.map"
+  }
 }
