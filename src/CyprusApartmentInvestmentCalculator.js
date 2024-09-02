@@ -1,13 +1,11 @@
 import React, { useState, useMemo } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Card, CardHeader, CardContent, CardTitle } from './components/Card';
 import { Input } from './components/Input';
 import { Label } from './components/Label';
 import { Slider } from './components/Slider';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './components/Select';
 import { Toggle } from './components/Toggle'; // Assuming you have a Toggle component
-
-const formatNumber = (num) => new Intl.NumberFormat('en-US').format(Math.round(num));
+import { formatNumber, calculateRentalYield, calculateReturns } from './utils/calculations';
 
 const SliderWithValue = ({ label, id, value, min, max, step, onChange, unit = '%' }) => (
   <div className="flex flex-col space-y-1.5">
@@ -24,78 +22,16 @@ const SliderWithValue = ({ label, id, value, min, max, step, onChange, unit = '%
     />
   </div>
 );
+export default ApartmentInvestmentCalculator;
 
-const calculateRentalYield = (monthlyRent, totalPrice) => {
-  const annualRent = monthlyRent * 12;
-  return (annualRent / totalPrice) * 100;
-};
-
-const calculateReturns = (params) => {
-  const { totalPrice, upfrontPercentage, constructionMonths, appreciationRate, years, occupancyRate, monthlyRent, monthlyManagementFee, transferTaxRate, vatRate, israeliTaxRate, isNewApartment } = params;
-
-  const upfrontPayment = totalPrice * (upfrontPercentage / 100);
-  const remainingPayment = totalPrice - upfrontPayment;
-  const monthlyPayment = remainingPayment / constructionMonths;
-
-  let totalInvestment = upfrontPayment;
-  for (let i = 1; i <= constructionMonths; i++) {
-    totalInvestment += monthlyPayment;
-  }
-
-  let currentValue = totalPrice;
-  let totalRentalIncome = 0;
-  let totalManagementFees = 0;
-  let totalVatReturns = 0;
-  let totalIsraeliTax = 0;
-  let transferTax = 0;
-
-  const rentalYears = Math.max(0, years - (constructionMonths / 12));
-
-  for (let i = 0; i < rentalYears; i++) {
-    const yearlyRent = monthlyRent * 12 * (occupancyRate / 100);
-    const yearlyManagementFee = monthlyManagementFee * 12;
-    const yearlyVatReturn = (yearlyRent * (vatRate / 100)) / (1 + vatRate / 100);
-    const yearlyIsraeliTax = (yearlyRent - yearlyManagementFee) * (israeliTaxRate / 100);
-    
-    totalRentalIncome += yearlyRent;
-    totalManagementFees += yearlyManagementFee;
-    totalIsraeliTax += yearlyIsraeliTax;
-    if (i > 0) { // VAT returns start from the second year
-      totalVatReturns += yearlyVatReturn;
-    }
-    currentValue *= (1 + appreciationRate / 100);
-  }
-
-  if (!isNewApartment) {
-    transferTax = totalPrice * (transferTaxRate / 100);
-    totalInvestment += transferTax;
-  }
-
-  const totalAppreciation = currentValue - totalPrice;
-  const totalReturn = totalRentalIncome + totalAppreciation + totalVatReturns - totalManagementFees - totalIsraeliTax;
-  const roi = (totalReturn / totalInvestment) * 100;
-
-  return {
-    upfrontPayment,
-    monthlyPayment,
-    totalInvestment,
-    finalValue: currentValue,
-    totalRentalIncome,
-    totalManagementFees,
-    totalVatReturns,
-    totalIsraeliTax,
-    totalAppreciation,
-    totalReturn,
-    roi,
-    transferTax
-  };
-};
-
-export default function ApartmentInvestmentCalculator() {
-  const [investmentParams, setInvestmentParams] = useState({
+export function ApartmentInvestmentCalculator() {
+  const [propertyDetails, setPropertyDetails] = useState({
     totalPrice: 300000,
     upfrontPercentage: 30,
     constructionMonths: 24,
+  });
+
+  const [investmentParams, setInvestmentParams] = useState({
     appreciationRate: 3,
     years: 7,
     occupancyRate: 100,
@@ -103,18 +39,26 @@ export default function ApartmentInvestmentCalculator() {
     monthlyManagementFee: 100,
     transferTaxRate: 8,
     vatRate: 19,
-    israeliTaxRate: 15
+    israeliTaxRate: 15,
+    isNewApartment: true,
   });
 
-  const handleParamChange = (key, value) => {
+  const handlePropertyChange = (key, value) => {
+    setPropertyDetails(prevState => ({
+      ...prevState,
+      [key]: value
+    }));
+  };
+
+  const handleInvestmentChange = (key, value) => {
     setInvestmentParams(prevState => ({
       ...prevState,
       [key]: value
     }));
   };
 
-  const results = useMemo(() => calculateReturns(investmentParams), [investmentParams]);
-  const rentalYield = useMemo(() => calculateRentalYield(investmentParams.monthlyRent, investmentParams.totalPrice), [investmentParams.monthlyRent, investmentParams.totalPrice]);
+  const results = useMemo(() => calculateReturns({ ...propertyDetails, ...investmentParams }), [propertyDetails, investmentParams]);
+  const rentalYield = useMemo(() => calculateRentalYield(investmentParams.monthlyRent, propertyDetails.totalPrice), [investmentParams.monthlyRent, propertyDetails.totalPrice]);
 
   return (
     <div className="space-y-4">
@@ -129,20 +73,20 @@ export default function ApartmentInvestmentCalculator() {
               <div className="grid grid-cols-3 gap-4">
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="totalPrice">Total Apartment Price (€)</Label>
-                  <Input id="totalPrice" value={investmentParams.totalPrice} onChange={(e) => handleParamChange('totalPrice', Number(e.target.value))} className="bg-white text-black" />
+                  <Input id="totalPrice" value={propertyDetails.totalPrice} onChange={(e) => handlePropertyChange('totalPrice', Number(e.target.value))} className="bg-white text-black" />
                 </div>
                 <SliderWithValue
                   label="Upfront Payment"
                   id="upfrontPercentage"
-                  value={investmentParams.upfrontPercentage}
+                  value={propertyDetails.upfrontPercentage}
                   min={0}
                   max={100}
                   step={1}
-                  onChange={(value) => handleParamChange('upfrontPercentage', value)}
+                  onChange={(value) => handlePropertyChange('upfrontPercentage', value)}
                 />
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="constructionMonths">Construction Period</Label>
-                  <Select value={investmentParams.constructionMonths.toString()} onValueChange={(value) => handleParamChange('constructionMonths', Number(value))}>
+                  <Select value={propertyDetails.constructionMonths.toString()} onValueChange={(value) => handlePropertyChange('constructionMonths', Number(value))}>
                     {[12, 24, 36, 48, 60].map((months) => (
                       <option key={months} value={months.toString()}>{months / 12} years</option>
                     ))}
@@ -165,11 +109,11 @@ export default function ApartmentInvestmentCalculator() {
                   min={0}
                   max={10}
                   step={0.1}
-                  onChange={(value) => handleParamChange('appreciationRate', value)}
+                  onChange={(value) => handleInvestmentChange('appreciationRate', value)}
                 />
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="years">Investment Period (Years)</Label>
-                  <Select value={investmentParams.years.toString()} onValueChange={(value) => handleParamChange('years', Number(value))}>
+                  <Select value={investmentParams.years.toString()} onValueChange={(value) => handleInvestmentChange('years', Number(value))}>
                     <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Select period" />
                     </SelectTrigger>
@@ -192,7 +136,7 @@ export default function ApartmentInvestmentCalculator() {
                     id="occupancyRate" 
                     type="number" 
                     value={investmentParams.occupancyRate} 
-                    onChange={(e) => handleParamChange('occupancyRate', Number(e.target.value))}
+                    onChange={(e) => handleInvestmentChange('occupancyRate', Number(e.target.value))}
                     min={0}
                     max={100}
                     step={0.1}
@@ -205,7 +149,7 @@ export default function ApartmentInvestmentCalculator() {
                     id="monthlyRent" 
                     type="number"
                     value={investmentParams.monthlyRent} 
-                    onChange={(e) => handleParamChange('monthlyRent', Number(e.target.value))} 
+                    onChange={(e) => handleInvestmentChange('monthlyRent', Number(e.target.value))} 
                     className="bg-white text-black"
                   />
                 </div>
@@ -215,7 +159,7 @@ export default function ApartmentInvestmentCalculator() {
                     id="monthlyManagementFee" 
                     type="number"
                     value={investmentParams.monthlyManagementFee} 
-                    onChange={(e) => handleParamChange('monthlyManagementFee', Number(e.target.value))} 
+                    onChange={(e) => handleInvestmentChange('monthlyManagementFee', Number(e.target.value))} 
                     className="bg-white text-black"
                   />
                 </div>
@@ -230,7 +174,7 @@ export default function ApartmentInvestmentCalculator() {
                   <Toggle 
                     id="isNewApartment" 
                     checked={investmentParams.isNewApartment} 
-                    onChange={(checked) => handleParamChange('isNewApartment', checked)} 
+                    onChange={(checked) => handleInvestmentChange('isNewApartment', checked)} 
                   />
                 </div>
                 {investmentParams.isNewApartment ? (
@@ -246,7 +190,7 @@ export default function ApartmentInvestmentCalculator() {
                     min={0}
                     max={15}
                     step={0.1}
-                    onChange={(value) => handleParamChange('transferTaxRate', value)}
+                    onChange={(value) => handleInvestmentChange('transferTaxRate', value)}
                   />
                 )}
                 <div className="flex flex-col space-y-1.5">
@@ -271,7 +215,7 @@ export default function ApartmentInvestmentCalculator() {
                 <div>Upfront Payment: €{formatNumber(results.upfrontPayment)}</div>
                 <div>Monthly Contractor Return Payment: €{formatNumber(results.monthlyPayment)}</div>
                 <div>Transfer Tax: €{formatNumber(results.transferTax)}</div>
-                <div>VAT: €{formatNumber(investmentParams.totalPrice * investmentParams.vatRate / 100)}</div>
+                <div>VAT: €{formatNumber(propertyDetails.totalPrice * investmentParams.vatRate / 100)}</div>
               </div>
             </div>
             <hr className="border-t-2 border-white" />
@@ -279,7 +223,7 @@ export default function ApartmentInvestmentCalculator() {
               <h3 className="text-xl font-semibold mb-2 border-b-2 pb-2">Investment Overview</h3>
               <div className="grid grid-cols-3 gap-4">
                 <div>Total Investment: €{formatNumber(results.totalInvestment)}</div>
-                <div>Total Investment Inc. VAT: €{formatNumber(results.totalInvestment + (investmentParams.totalPrice * investmentParams.vatRate / 100))}</div>
+                <div>Total Investment Inc. VAT: €{formatNumber(results.totalInvestment + (propertyDetails.totalPrice * investmentParams.vatRate / 100))}</div>
                 <div>Final Property Value: €{formatNumber(results.finalValue)}</div>
                 <div>Total Appreciation: €{formatNumber(results.totalAppreciation)}</div>
               </div>

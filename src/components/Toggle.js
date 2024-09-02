@@ -1,3 +1,4 @@
+import React from 'react'; // Add this line
 // import './Toggle.css';
 
 const Toggle = ({ id, checked, onChange }) => {

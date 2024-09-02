@@ -1,3 +1,4 @@
+import React from 'react'; // Add this line
 import './App.css';
 import CyprusApartmentInvestmentCalculator from './CyprusApartmentInvestmentCalculator';
 

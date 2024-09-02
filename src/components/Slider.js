@@ -1,3 +1,5 @@
+import React from 'react'; // Add this line
+
 function Slider({ id, min, max, step, value, onValueChange }) {
   return (
     <input

@@ -1,3 +1,5 @@
+import React from 'react'; // Add this line
+
 function Card({ children, className }) {
   return <div className={`card ${className}`}>{children}</div>;
 }

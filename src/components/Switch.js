@@ -1,4 +1,6 @@
 import * as SwitchPrimitive from '@radix-ui/react-switch';
+import React from 'react'; // Add this line
+
 
 export const Switch = React.forwardRef(({ ...props }, ref) => (
   <SwitchPrimitive.Root
