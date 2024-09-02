@@ -5,11 +5,11 @@ import { Select, SelectItem } from './Select';
 
 const InvestmentParameters = ({ investmentParams, handleInvestmentChange, rentalYield }) => (
   <div>
-    <h3 className="text-lg font-semibold mb-2">Investment Parameters</h3>
-    <div className="space-y-4">
-      <div className="flex items-center space-x-2">
+    <h3>Investment Parameters</h3>
+    <div>
+      <div>
         <Label>Annual Rental Yield</Label>
-        <div className="font-bold">{rentalYield.toFixed(2)}%</div>
+        <div>{rentalYield.toFixed(2)}%</div>
       </div>
       <SliderWithValue
         label="Annual Appreciation Rate (%)"

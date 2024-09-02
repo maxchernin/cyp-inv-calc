@@ -5,9 +5,9 @@ import { Label } from './Label';
 
 const SliderWithValue = ({ label, id, value, min, max, step, onChange }) => {
   return (
-    <div className="space-y-2">
+    <div>
       <Label htmlFor={id}>{label}</Label>
-      <div className="flex items-center space-x-4">
+      <div>
         <Slider
           id={`${id}-slider`}
           min={min}
@@ -15,7 +15,6 @@ const SliderWithValue = ({ label, id, value, min, max, step, onChange }) => {
           step={step}
           value={[value]}
           onValueChange={(values) => onChange(values[0])}
-          className="flex-grow"
         />
         <Input
           id={id}
@@ -25,7 +24,6 @@ const SliderWithValue = ({ label, id, value, min, max, step, onChange }) => {
           min={min}
           max={max}
           step={step}
-          className="w-20 bg-white text-black"
         />
       </div>
     </div>

@@ -23,29 +23,29 @@ export function ApartmentInvestmentCalculator() {
   const rentalYield = useMemo(() => calculateRentalYield(state.monthlyRent, state.totalPrice), [state.monthlyRent, state.totalPrice]);
 
   return (
-    <div className="max-w-7xl mx-auto p-4 space-y-4">
-      <h1 className="text-3xl font-bold text-center mb-6">Cyprus Apartment Investment Calculator for Israeli Investors</h1>
-      <div className="grid grid-cols-2 gap-4">
-        <Card className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-          <CardContent className="p-4 space-y-4">
+    <div>
+      <h1>Cyprus Apartment Investment Calculator for Israeli Investors</h1>
+      <div>
+        <Card>
+          <CardContent>
             <PropertyDetails propertyDetails={state} handlePropertyChange={handleChange} />
             <InvestmentParameters investmentParams={state} handleInvestmentChange={handleChange} rentalYield={rentalYield} />
           </CardContent>
         </Card>
-        <Card className="bg-gradient-to-r from-green-500 to-teal-500 text-white">
-          <CardContent className="p-4">
+        <Card>
+          <CardContent>
             <ResultsDisplay results={results} propertyDetails={state} investmentParams={state} />
           </CardContent>
         </Card>
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        <Card className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-          <CardContent className="p-4 space-y-4">
+      <div>
+        <Card>
+          <CardContent>
             <RentalDetails rentalDetails={state} handleRentalChange={handleChange} />
           </CardContent>
         </Card>
-        <Card className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-          <CardContent className="p-4 space-y-4">
+        <Card>
+          <CardContent>
             <TaxDetails taxDetails={state} handleTaxChange={handleChange} />
           </CardContent>
         </Card>

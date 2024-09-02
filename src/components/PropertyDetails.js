@@ -4,9 +4,9 @@ import { Label } from './Label';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from './Select';
 
 const PropertyDetails = ({ propertyDetails, handlePropertyChange }) => (
-  <div className="space-y-3">
-    <h3 className="text-lg font-semibold">Property Details</h3>
-    <div className="grid grid-cols-2 gap-3">
+  <div>
+    <h3>Property Details</h3>
+    <div>
       <div>
         <Label htmlFor="totalPrice">Total Price (€)</Label>
         <Input
@@ -14,7 +14,6 @@ const PropertyDetails = ({ propertyDetails, handlePropertyChange }) => (
           type="number"
           value={propertyDetails.totalPrice}
           onChange={(e) => handlePropertyChange('totalPrice', Number(e.target.value))}
-          className="bg-white text-black"
         />
       </div>
       <div>
@@ -26,7 +25,6 @@ const PropertyDetails = ({ propertyDetails, handlePropertyChange }) => (
           onChange={(e) => handlePropertyChange('upfrontPercentage', Number(e.target.value))}
           min={0}
           max={100}
-          className="bg-white text-black"
         />
       </div>
     </div>

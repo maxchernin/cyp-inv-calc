@@ -1,19 +1,19 @@
-import React from 'react'; // Add this line
+import React from 'react';
 
-function Card({ children, className }) {
-  return <div className={`card ${className}`}>{children}</div>;
+function Card({ children }) {
+  return <div>{children}</div>;
 }
 
 function CardHeader({ children }) {
-  return <div className="card-header">{children}</div>;
+  return <div>{children}</div>;
 }
 
 function CardContent({ children }) {
-  return <div className="card-content">{children}</div>;
+  return <div>{children}</div>;
 }
 
 function CardTitle({ children }) {
-  return <h2 className="card-title">{children}</h2>;
+  return <h2>{children}</h2>;
 }
 
 export { Card, CardHeader, CardContent, CardTitle };
