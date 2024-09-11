@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cyp-inv-calc/static/css/main.cd722348.css",
-    "main.js": "/cyp-inv-calc/static/js/main.02bf4df4.js",
+    "main.js": "/cyp-inv-calc/static/js/main.f0d65114.js",
     "static/js/453.7f72c850.chunk.js": "/cyp-inv-calc/static/js/453.7f72c850.chunk.js",
     "index.html": "/cyp-inv-calc/index.html",
     "main.cd722348.css.map": "/cyp-inv-calc/static/css/main.cd722348.css.map",
-    "main.02bf4df4.js.map": "/cyp-inv-calc/static/js/main.02bf4df4.js.map",
+    "main.f0d65114.js.map": "/cyp-inv-calc/static/js/main.f0d65114.js.map",
     "453.7f72c850.chunk.js.map": "/cyp-inv-calc/static/js/453.7f72c850.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cd722348.css",
-    "static/js/main.02bf4df4.js"
+    "static/js/main.f0d65114.js"
   ]
 }
