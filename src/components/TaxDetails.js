@@ -1,46 +1,35 @@
 import React from 'react';
-import { Label } from './Label';
+import { Typography, FormControlLabel, Switch } from '@mui/material';
 import SliderWithValue from './SliderWithValue';
 
 const TaxDetails = ({ taxDetails, handleTaxChange }) => (
   <div>
-    <h3>Taxes</h3>
-    <div>
-      <div>
-        <input
-          type="checkbox"
-          id="isNewApartment"
+    <Typography variant="h6" gutterBottom>Taxes</Typography>
+    <FormControlLabel
+      control={
+        <Switch
           checked={taxDetails.isNewApartment}
           onChange={(e) => handleTaxChange('isNewApartment', e.target.checked)}
         />
-        <Label htmlFor="isNewApartment">New Apartment</Label>
-      </div>
-      {taxDetails.isNewApartment ? (
-        <div>
-          <Label>VAT Rate</Label>
-          <div>{taxDetails.vatRate}%</div>
-        </div>
-      ) : (
-        <SliderWithValue
-          label="Transfer Tax Rate"
-          id="transferTaxRate"
-          value={taxDetails.transferTaxRate}
-          min={0}
-          max={15}
-          step={0.1}
-          onChange={(value) => handleTaxChange('transferTaxRate', value)}
-        />
-      )}
+      }
+      label="New Apartment"
+    />
+    {taxDetails.isNewApartment ? (
+      <Typography>VAT Rate: {taxDetails.vatRate}%</Typography>
+    ) : (
       <SliderWithValue
-        label="Israeli Tax Rate"
-        id="israeliTaxRate"
-        value={taxDetails.israeliTaxRate}
+        label="Transfer Tax Rate"
+        id="transferTaxRate"
+        value={taxDetails.transferTaxRate}
         min={0}
-        max={50}
+        max={15}
         step={0.1}
-        onChange={(value) => handleTaxChange('israeliTaxRate', value)}
+        onChange={(value) => handleTaxChange('transferTaxRate', value)}
       />
-    </div>
+    )}
+    <Typography>
+      Israeli Tax Rate: {taxDetails.israeliTaxRate}%
+    </Typography>
   </div>
 );
 

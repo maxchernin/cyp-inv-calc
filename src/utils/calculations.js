@@ -6,25 +6,30 @@ export const calculateRentalYield = (monthlyRent, totalPrice) => {
 };
 
 export const calculateReturns = (params) => {
-  const { totalPrice, upfrontPercentage, constructionMonths, appreciationRate, years, occupancyRate, monthlyRent, monthlyManagementFee, transferTaxRate, vatRate, israeliTaxRate, isNewApartment } = params;
+  const { totalPrice, upfrontPercentage, reservationFeePercentage, constructionMonths, appreciationRate, years, occupancyRate, monthlyRent, monthlyManagementFee, transferTaxRate, vatRate, israeliTaxRate, isNewApartment } = params;
 
-  const upfrontPayment = totalPrice * (upfrontPercentage / 100);
-  const remainingPayment = totalPrice - upfrontPayment;
+  const reservationFee = totalPrice * (reservationFeePercentage / 100);
+  const upfrontPayment = (totalPrice * (upfrontPercentage / 100)) - reservationFee;
+  const totalFirstPayment = upfrontPayment + reservationFee;
+  const remainingPayment = totalPrice - totalFirstPayment;
   const monthlyPayment = remainingPayment / constructionMonths;
 
-  let totalInvestment = upfrontPayment;
+  let totalInvestment = totalFirstPayment;
+  let currentValue = totalPrice;
+
+  // Apply appreciation during construction period
   for (let i = 1; i <= constructionMonths; i++) {
+    currentValue *= (1 + appreciationRate / 1200); // Monthly appreciation rate
     totalInvestment += monthlyPayment;
   }
 
-  let currentValue = totalPrice;
   let totalRentalIncome = 0;
   let totalManagementFees = 0;
   let totalVatReturns = 0;
   let totalIsraeliTax = 0;
   let transferTax = 0;
 
-  const rentalYears = Math.max(0, years - (constructionMonths / 12));
+  const rentalYears = years - (constructionMonths / 12);
 
   for (let i = 0; i < rentalYears; i++) {
     const yearlyRent = monthlyRent * 12 * (occupancyRate / 100);
@@ -51,6 +56,8 @@ export const calculateReturns = (params) => {
 
   return {
     upfrontPayment,
+    reservationFee,
+    totalFirstPayment,
     monthlyPayment,
     totalInvestment,
     finalValue: currentValue,

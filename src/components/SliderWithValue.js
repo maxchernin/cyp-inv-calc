@@ -1,32 +1,34 @@
 import React from 'react';
-import { Slider } from './Slider';
-import { Input } from './Input';
-import { Label } from './Label';
+import { Slider, TextField, Typography, Box } from '@mui/material';
 
 const SliderWithValue = ({ label, id, value, min, max, step, onChange }) => {
   return (
-    <div>
-      <Label htmlFor={id}>{label}</Label>
-      <div>
+    <Box mb={2}>
+      <Typography gutterBottom>{label}</Typography>
+      <Box display="flex" alignItems="center">
         <Slider
-          id={`${id}-slider`}
+          value={value}
+          onChange={(_, newValue) => onChange(newValue)}
+          aria-labelledby={id}
           min={min}
           max={max}
           step={step}
-          value={[value]}
-          onValueChange={(values) => onChange(values[0])}
+          sx={{ flexGrow: 1, mr: 2 }}
         />
-        <Input
+        <TextField
           id={id}
           type="number"
           value={value}
           onChange={(e) => onChange(Number(e.target.value))}
-          min={min}
-          max={max}
-          step={step}
+          inputProps={{
+            min: min,
+            max: max,
+            step: step,
+          }}
+          sx={{ width: 80 }}
         />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

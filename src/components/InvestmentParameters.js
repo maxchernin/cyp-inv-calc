@@ -1,7 +1,7 @@
 import React from 'react';
 import { Label } from './Label';
 import SliderWithValue from './SliderWithValue';
-import { Select, SelectItem } from './Select';
+import { Select, MenuItem } from '@mui/material';
 
 const InvestmentParameters = ({ investmentParams, handleInvestmentChange, rentalYield }) => (
   <div>
@@ -22,12 +22,13 @@ const InvestmentParameters = ({ investmentParams, handleInvestmentChange, rental
       />
       <div>
         <Label htmlFor="years">Investment Period (Years)</Label>
-        <Select 
-          value={investmentParams.years.toString()} 
-          onValueChange={(value) => handleInvestmentChange('years', Number(value))}
+        <Select
+          value={investmentParams.years}
+          onChange={(e) => handleInvestmentChange('years', Number(e.target.value))}
+          fullWidth
         >
           {[...Array(20)].map((_, i) => (
-            <SelectItem key={i+1} value={(i+1).toString()}>{i+1} years</SelectItem>
+            <MenuItem key={i+1} value={i+1}>{i+1} years</MenuItem>
           ))}
         </Select>
       </div>
