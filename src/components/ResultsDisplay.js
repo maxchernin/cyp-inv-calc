@@ -13,6 +13,8 @@ const ResultsDisplay = ({ results, propertyDetails, investmentParams }) => (
           <Typography>Monthly Payment: €{formatNumber(results.monthlyPayment)}</Typography>
           <Typography>Transfer Tax: €{formatNumber(results.transferTax)}</Typography>
           <Typography>VAT: €{formatNumber(propertyDetails.totalPrice * investmentParams.vatRate / 100)}</Typography>
+          <Typography>AC Cost: €{formatNumber(propertyDetails.acCost)}</Typography>
+          <Typography>Furniture Cost: €{formatNumber(propertyDetails.furnitureCost)}</Typography>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -29,6 +31,7 @@ const ResultsDisplay = ({ results, propertyDetails, investmentParams }) => (
           <Typography variant="subtitle1" gutterBottom>Rental Income and Expenses</Typography>
           <Typography>Rental Income: €{formatNumber(results.totalRentalIncome)}</Typography>
           <Typography>Management Fees: €{formatNumber(results.totalManagementFees)}</Typography>
+          <Typography>Total Expenses: €{formatNumber(results.totalExpenses)}</Typography>
           <Typography>VAT Returns: €{formatNumber(results.totalVatReturns)}</Typography>
         </Paper>
       </Grid>

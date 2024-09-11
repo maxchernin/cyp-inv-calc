@@ -5,8 +5,8 @@ export const calculateRentalYield = (monthlyRent, totalPrice) => {
   return (annualRent / totalPrice) * 100;
 };
 
-export const calculateReturns = (params) => {
-  const { totalPrice, upfrontPercentage, reservationFeePercentage, constructionMonths, appreciationRate, years, occupancyRate, monthlyRent, monthlyManagementFee, transferTaxRate, vatRate, israeliTaxRate, isNewApartment } = params;
+export const calculateReturns = (state) => {
+  const { totalPrice, upfrontPercentage, reservationFeePercentage, constructionMonths, appreciationRate, years, occupancyRate, monthlyRent, monthlyManagementFee, transferTaxRate, vatRate, israeliTaxRate, isNewApartment, acCost, furnitureCost } = state;
 
   const reservationFee = totalPrice * (reservationFeePercentage / 100);
   const upfrontPayment = (totalPrice * (upfrontPercentage / 100)) - reservationFee;
@@ -14,7 +14,11 @@ export const calculateReturns = (params) => {
   const remainingPayment = totalPrice - totalFirstPayment;
   const monthlyPayment = remainingPayment / constructionMonths;
 
-  let totalInvestment = totalFirstPayment;
+  const transferTax = isNewApartment ? 0 : totalPrice * (transferTaxRate / 100);
+
+  // Include AC and furniture costs in the initial investment
+  let totalInvestment = upfrontPayment + transferTax + acCost + furnitureCost;
+
   let currentValue = totalPrice;
 
   // Apply appreciation during construction period
@@ -27,7 +31,6 @@ export const calculateReturns = (params) => {
   let totalManagementFees = 0;
   let totalVatReturns = 0;
   let totalIsraeliTax = 0;
-  let transferTax = 0;
 
   const rentalYears = years - (constructionMonths / 12);
 
@@ -45,14 +48,12 @@ export const calculateReturns = (params) => {
     currentValue *= (1 + appreciationRate / 100);
   }
 
-  if (!isNewApartment) {
-    transferTax = totalPrice * (transferTaxRate / 100);
-    totalInvestment += transferTax;
-  }
+  // Remove AC and furniture costs from ongoing expenses
+  const totalExpenses = totalManagementFees;
 
   const totalAppreciation = currentValue - totalPrice;
-  const totalReturn = totalRentalIncome + totalAppreciation + totalVatReturns - totalManagementFees - totalIsraeliTax;
-  const roi = (totalReturn / totalInvestment) * 100;
+  const totalReturn = currentValue - totalInvestment + totalRentalIncome - totalExpenses - totalIsraeliTax + totalVatReturns;
+  const roi = ((totalReturn / totalInvestment) * 100) / years;
 
   return {
     upfrontPayment,
@@ -68,6 +69,9 @@ export const calculateReturns = (params) => {
     totalAppreciation,
     totalReturn,
     roi,
-    transferTax
+    transferTax,
+    totalExpenses,
+    acCost,
+    furnitureCost
   };
 };

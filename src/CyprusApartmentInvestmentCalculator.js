@@ -8,16 +8,28 @@ import ResultsDisplay from './components/ResultsDisplay';
 import { calculateRentalYield, calculateReturns } from './utils/calculations';
 
 const INITIAL_STATE = {
-  totalPrice: 300000, upfrontPercentage: 30, reservationFeePercentage: 5, constructionMonths: 24,
-  appreciationRate: 3, years: 3, occupancyRate: 100, monthlyRent: 1000,
-  monthlyManagementFee: 100, transferTaxRate: 8, vatRate: 19, israeliTaxRate: 15,
-  isNewApartment: true
+  totalPrice: 300000,
+  upfrontPercentage: 30,
+  reservationFeePercentage: 5,
+  constructionMonths: 24,
+  appreciationRate: 3,
+  years: 3,
+  occupancyRate: 100,
+  monthlyRent: 1000,
+  monthlyManagementFee: 100,
+  transferTaxRate: 8,
+  vatRate: 19,
+  israeliTaxRate: 15,
+  isNewApartment: true,
+  acCost: 1000,
+  furnitureCost: 5000
 };
 
 export function ApartmentInvestmentCalculator() {
   const [state, setState] = useState(INITIAL_STATE);
   const handleChange = (key, value) => {
     if (key !== 'israeliTaxRate') {
+      console.log(`Updating ${key} to ${value}`);  // Add this line
       setState(prev => ({ ...prev, [key]: value }));
     }
   };

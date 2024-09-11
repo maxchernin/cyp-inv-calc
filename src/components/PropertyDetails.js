@@ -60,6 +60,34 @@ const PropertyDetails = ({ propertyDetails, handlePropertyChange }) => {
           />
         </Grid>
         <Grid item xs={12}>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Label htmlFor="acCost">AC Cost (€)</Label>
+              <TextField
+                id="acCost"
+                type="number"
+                value={propertyDetails.acCost || ''}
+                onChange={(e) => handlePropertyChange('acCost', Number(e.target.value))}
+                fullWidth
+                variant="outlined"
+                size="small"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <Label htmlFor="furnitureCost">Furniture Cost (€)</Label>
+              <TextField
+                id="furnitureCost"
+                type="number"
+                value={propertyDetails.furnitureCost || ''}
+                onChange={(e) => handlePropertyChange('furnitureCost', Number(e.target.value))}
+                fullWidth
+                variant="outlined"
+                size="small"
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
           <Label htmlFor="constructionMonths">Construction Period</Label>
           <FormControl fullWidth>
             <Select
