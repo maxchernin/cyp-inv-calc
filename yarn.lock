@@ -1606,38 +1606,38 @@
     clsx "^2.1.1"
     prop-types "^15.8.1"
 
-"@mui/core-downloads-tracker@^6.1.10":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-6.1.10.tgz#871b5a4876cfd0beac6672fe50d57e0c0a53db36"
+"@mui/core-downloads-tracker@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-6.2.0.tgz#52953b858eaf3204ac505bf0329528fd3130c775"
 
-"@mui/material@^6.1.10":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@mui/material/-/material-6.1.10.tgz#eab2a9df24c68548d0df2b5b25c0410311313ff9"
+"@mui/material@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@mui/material/-/material-6.2.0.tgz#e649438c3de3d26c8e79845711572a4ae34125bb"
   dependencies:
     "@babel/runtime" "^7.26.0"
-    "@mui/core-downloads-tracker" "^6.1.10"
-    "@mui/system" "^6.1.10"
+    "@mui/core-downloads-tracker" "^6.2.0"
+    "@mui/system" "^6.2.0"
     "@mui/types" "^7.2.19"
-    "@mui/utils" "^6.1.10"
+    "@mui/utils" "^6.2.0"
     "@popperjs/core" "^2.11.8"
     "@types/react-transition-group" "^4.4.11"
     clsx "^2.1.1"
     csstype "^3.1.3"
     prop-types "^15.8.1"
-    react-is "^18.3.1"
+    react-is "^19.0.0"
     react-transition-group "^4.4.5"
 
-"@mui/private-theming@^6.1.10":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@mui/private-theming/-/private-theming-6.1.10.tgz#cfe8f70c30351208e8ca5c2b16c6992ce0288559"
+"@mui/private-theming@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@mui/private-theming/-/private-theming-6.2.0.tgz#b94a7c5726b7337cfad1800bfd5927cf2af4b131"
   dependencies:
     "@babel/runtime" "^7.26.0"
-    "@mui/utils" "^6.1.10"
+    "@mui/utils" "^6.2.0"
     prop-types "^15.8.1"
 
-"@mui/styled-engine@^6.1.10":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@mui/styled-engine/-/styled-engine-6.1.10.tgz#0f093defd35934b6accff156011c9deac22356be"
+"@mui/styled-engine@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@mui/styled-engine/-/styled-engine-6.2.0.tgz#f0d4450b86ee4f39906b51d1439710b754269d3f"
   dependencies:
     "@babel/runtime" "^7.26.0"
     "@emotion/cache" "^11.13.5"
@@ -1646,15 +1646,15 @@
     csstype "^3.1.3"
     prop-types "^15.8.1"
 
-"@mui/system@^6.1.10":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@mui/system/-/system-6.1.10.tgz#d8a6f9099883880182cfafc08fc8ab8099647c01"
+"@mui/system@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@mui/system/-/system-6.2.0.tgz#1841438bc50716c7c739345756bc4cd60aa34a71"
   dependencies:
     "@babel/runtime" "^7.26.0"
-    "@mui/private-theming" "^6.1.10"
-    "@mui/styled-engine" "^6.1.10"
+    "@mui/private-theming" "^6.2.0"
+    "@mui/styled-engine" "^6.2.0"
     "@mui/types" "^7.2.19"
-    "@mui/utils" "^6.1.10"
+    "@mui/utils" "^6.2.0"
     clsx "^2.1.1"
     csstype "^3.1.3"
     prop-types "^15.8.1"
@@ -1663,16 +1663,16 @@
   version "7.2.19"
   resolved "https://registry.yarnpkg.com/@mui/types/-/types-7.2.19.tgz#c941954dd24393fdce5f07830d44440cf4ab6c80"
 
-"@mui/utils@^6.1.10":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@mui/utils/-/utils-6.1.10.tgz#edf8c5c9cf930a8290b5347550ece15f5800b1c3"
+"@mui/utils@^6.1.10", "@mui/utils@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@mui/utils/-/utils-6.2.0.tgz#a39f0a2837048a42114169d298ce970913097203"
   dependencies:
     "@babel/runtime" "^7.26.0"
     "@mui/types" "^7.2.19"
-    "@types/prop-types" "^15.7.13"
+    "@types/prop-types" "^15.7.14"
     clsx "^2.1.1"
     prop-types "^15.8.1"
-    react-is "^18.3.1"
+    react-is "^19.0.0"
 
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"
@@ -2051,9 +2051,9 @@
   version "15.7.12"
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.12.tgz"
 
-"@types/prop-types@^15.7.13":
-  version "15.7.13"
-  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.13.tgz#2af91918ee12d9d32914feb13f5326658461b451"
+"@types/prop-types@^15.7.14":
+  version "15.7.14"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.14.tgz#1433419d73b2a7ebfc6918dcefd2ec0d5cd698f2"
 
 "@types/q@^1.5.1":
   version "1.5.2"
@@ -7141,9 +7141,13 @@ react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
 
-react-is@^18.0.0, react-is@^18.3.1:
+react-is@^18.0.0:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
+
+react-is@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-19.0.0.tgz#d6669fd389ff022a9684f708cf6fa4962d1fea7a"
 
 react-refresh@^0.11.0:
   version "0.11.0"
