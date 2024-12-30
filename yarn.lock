@@ -1594,14 +1594,14 @@
   version "2.0.5"
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.5.tgz"
 
-"@mui/base@^5.0.0-beta.67":
-  version "5.0.0-beta.67"
-  resolved "https://registry.yarnpkg.com/@mui/base/-/base-5.0.0-beta.67.tgz#c343fb27da76c67493edb9b1f5660523af9db3f6"
+"@mui/base@^5.0.0-beta.68":
+  version "5.0.0-beta.68"
+  resolved "https://registry.yarnpkg.com/@mui/base/-/base-5.0.0-beta.68.tgz#a651d0f490dcf9495ce297a2f7403cfa6fd94841"
   dependencies:
     "@babel/runtime" "^7.26.0"
     "@floating-ui/react-dom" "^2.1.1"
     "@mui/types" "^7.2.20"
-    "@mui/utils" "^6.2.1"
+    "@mui/utils" "^6.3.0"
     "@popperjs/core" "^2.11.8"
     clsx "^2.1.1"
     prop-types "^15.8.1"
@@ -1663,7 +1663,7 @@
   version "7.2.20"
   resolved "https://registry.yarnpkg.com/@mui/types/-/types-7.2.20.tgz#16d8c9178b42b62ba95bbedbda8f343feb373d1e"
 
-"@mui/utils@^6.2.1", "@mui/utils@^6.3.0":
+"@mui/utils@^6.3.0":
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/@mui/utils/-/utils-6.3.0.tgz#76c80cb663c7c1bdf782de50a5c3f6ff8bf38e21"
   dependencies:
