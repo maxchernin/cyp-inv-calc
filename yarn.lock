@@ -1606,19 +1606,19 @@
     clsx "^2.1.1"
     prop-types "^15.8.1"
 
-"@mui/core-downloads-tracker@^6.4.2":
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-6.4.2.tgz#a516b3f678add06e08978b327761622841326e39"
+"@mui/core-downloads-tracker@^6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-6.4.3.tgz#aa9506e4d43e02d61fb82e23de9741fd24b22b61"
 
-"@mui/material@^6.4.2":
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/@mui/material/-/material-6.4.2.tgz#480ecc683584d598efafd703655ecaac16335995"
+"@mui/material@^6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@mui/material/-/material-6.4.3.tgz#18cb003b6526bf4b3ad6f2bb46ab53154a51b19f"
   dependencies:
     "@babel/runtime" "^7.26.0"
-    "@mui/core-downloads-tracker" "^6.4.2"
-    "@mui/system" "^6.4.2"
+    "@mui/core-downloads-tracker" "^6.4.3"
+    "@mui/system" "^6.4.3"
     "@mui/types" "^7.2.21"
-    "@mui/utils" "^6.4.2"
+    "@mui/utils" "^6.4.3"
     "@popperjs/core" "^2.11.8"
     "@types/react-transition-group" "^4.4.12"
     clsx "^2.1.1"
@@ -1627,17 +1627,17 @@
     react-is "^19.0.0"
     react-transition-group "^4.4.5"
 
-"@mui/private-theming@^6.4.2":
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/@mui/private-theming/-/private-theming-6.4.2.tgz#25b2fbfb89632ed684900bee35d8f0eb664e9173"
+"@mui/private-theming@^6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@mui/private-theming/-/private-theming-6.4.3.tgz#40d7d95316e9e52d465f0c96da23f9fb8f6a989f"
   dependencies:
     "@babel/runtime" "^7.26.0"
-    "@mui/utils" "^6.4.2"
+    "@mui/utils" "^6.4.3"
     prop-types "^15.8.1"
 
-"@mui/styled-engine@^6.4.2":
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/@mui/styled-engine/-/styled-engine-6.4.2.tgz#6d2c734dc5cde2bf0ddf33d8f14b361fe5c7fe08"
+"@mui/styled-engine@^6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@mui/styled-engine/-/styled-engine-6.4.3.tgz#fbd7a6b925dfaeaa84ffbf8ed9be78a0ff0b3d6e"
   dependencies:
     "@babel/runtime" "^7.26.0"
     "@emotion/cache" "^11.13.5"
@@ -1646,15 +1646,15 @@
     csstype "^3.1.3"
     prop-types "^15.8.1"
 
-"@mui/system@^6.4.2":
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/@mui/system/-/system-6.4.2.tgz#856a999140a1d15329b5c9726cf2a55abbe9311f"
+"@mui/system@^6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@mui/system/-/system-6.4.3.tgz#f1e093850c8cc23c6605297c8a4134bea6fe290b"
   dependencies:
     "@babel/runtime" "^7.26.0"
-    "@mui/private-theming" "^6.4.2"
-    "@mui/styled-engine" "^6.4.2"
+    "@mui/private-theming" "^6.4.3"
+    "@mui/styled-engine" "^6.4.3"
     "@mui/types" "^7.2.21"
-    "@mui/utils" "^6.4.2"
+    "@mui/utils" "^6.4.3"
     clsx "^2.1.1"
     csstype "^3.1.3"
     prop-types "^15.8.1"
@@ -1663,9 +1663,9 @@
   version "7.2.21"
   resolved "https://registry.yarnpkg.com/@mui/types/-/types-7.2.21.tgz#63f50874eda8e4a021a69aaa8ba9597369befda2"
 
-"@mui/utils@^6.4.1", "@mui/utils@^6.4.2":
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/@mui/utils/-/utils-6.4.2.tgz#eeba878bf55fbe0a72bd6adb361f5737a489ec52"
+"@mui/utils@^6.4.1", "@mui/utils@^6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@mui/utils/-/utils-6.4.3.tgz#e08bc3a5ae1552a48dd13ddc7c65e3eebdb4cd58"
   dependencies:
     "@babel/runtime" "^7.26.0"
     "@mui/types" "^7.2.21"
