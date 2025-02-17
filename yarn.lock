@@ -1606,16 +1606,16 @@
     clsx "^2.1.1"
     prop-types "^15.8.1"
 
-"@mui/core-downloads-tracker@^6.4.3":
-  version "6.4.3"
-  resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-6.4.3.tgz#aa9506e4d43e02d61fb82e23de9741fd24b22b61"
+"@mui/core-downloads-tracker@^6.4.4":
+  version "6.4.4"
+  resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-6.4.4.tgz#7ea43a1185e9cb1dbec77b9fc543b3d8a338d1f0"
 
-"@mui/material@^6.4.3":
-  version "6.4.3"
-  resolved "https://registry.yarnpkg.com/@mui/material/-/material-6.4.3.tgz#18cb003b6526bf4b3ad6f2bb46ab53154a51b19f"
+"@mui/material@^6.4.4":
+  version "6.4.4"
+  resolved "https://registry.yarnpkg.com/@mui/material/-/material-6.4.4.tgz#fd2879cae5f3ed8a13b6257dbc051e0bbeefa8ee"
   dependencies:
     "@babel/runtime" "^7.26.0"
-    "@mui/core-downloads-tracker" "^6.4.3"
+    "@mui/core-downloads-tracker" "^6.4.4"
     "@mui/system" "^6.4.3"
     "@mui/types" "^7.2.21"
     "@mui/utils" "^6.4.3"
