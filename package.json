@@ -9,7 +9,7 @@
     "@mui/base": "^5.0.0-beta.70",
     "@mui/material": "^9.0.1",
     "react": "^19.2.6",
-    "react-dom": "^19.2.5",
+    "react-dom": "^19.2.6",
     "react-scripts": "^5.0.1",
     "web-vitals": "^5.3.0"
   },
